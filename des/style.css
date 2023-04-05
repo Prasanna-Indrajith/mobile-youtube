@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  width: 100%;
+  background-color: black;
+  color: hsl(0, 0%, 99%);
+}
+
+a {
+  text-decoration: none;
+  color: hsl(0, 0%, 99%);
+  font-size: 14px !important;
+}
+
+li {
+  list-style: none;
+}
+
+.padding-inline {
+  padding-inline: 1rem;
+}
+
+svg {
+  color: hsl(0, 0%, 99%);
+  height: 23px;
+}
+
+section {
+  max-width: 400px;
+  min-height: 100vh;
+  max-height: max-content;
+  margin-inline: auto;
+  background-color: hsl(0, 0%, 8%);
+  position: relative;
+}
+
+nav {
+  padding-block: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+nav .top-logo {
+  height: 20px;
+}
+nav ul {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.sub-nav {
+  padding-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  overflow-inline: scroll;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+}
+.sub-nav div {
+  margin-inline-end: 2rem;
+}
+.sub-nav div a svg {
+  padding: 0.3rem 0.8rem;
+  background-color: hsl(0, 0%, 15%);
+  height: 100% !important;
+  width: max-content !important;
+  border-radius: 5px;
+}
+.sub-nav ul {
+  display: flex;
+  gap: 0.5rem;
+}
+.sub-nav ul li:nth-child(1) a {
+  background-color: hsl(0, 0%, 99%) !important;
+  color: hsl(0, 0%, 8%) !important;
+}
+.sub-nav ul li a {
+  background-color: hsl(0, 0%, 15%);
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  font-size: 16px;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+p {
+  font-size: 12px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+main .video {
+  display: flex;
+  flex-direction: column;
+}
+main .video .a-video-container {
+  position: relative;
+  width: 100%;
+}
+main .video .a-video-container .a_video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: hsla(0, 0%, 15%, 0.5);
+}
+main .video .a-video-container span {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background-color: hsla(0, 0%, 15%, 0.5);
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+}
+main .video .meta-info {
+  padding: 0.8rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+main .video .meta-info > div {
+  display: flex;
+  column-gap: 0.5rem;
+}
+main .video .meta-info > div img {
+  width: 40px !important;
+  height: 40px !important;
+  aspect-ratio: 1/1;
+  border: 50%;
+}
+main .video .meta-info > div .right-side .video-title {
+  font-size: 14px;
+}
+main .video .meta-info > div .right-side span {
+  margin-top: 0.2rem;
+  display: flex;
+  column-gap: 0.5rem;
+  color: hsl(0, 0%, 70%);
+}
+main .video .meta-info .more-options {
+  cursor: pointer;
+  justify-self: flex-end;
+  right: 0;
+}
+main .video .meta-info .more-options-menu {
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+main .video .meta-info .more-options-menu ul {
+  position: absolute;
+  bottom: 0;
+  background-color: hsl(0, 0%, 8%);
+  width: 100%;
+  padding-top: 1rem;
+  border-radius: 20px;
+  transition: transform 0.25s ease;
+}
+main .video .meta-info .more-options-menu ul li span {
+  display: flex;
+  align-items: center;
+  column-gap: 1.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+main .video .meta-info .more-options-menu ul li span:hover {
+  background-color: hsla(0, 0%, 15%, 0.5);
+}
+main .video .meta-info .more-options-msg {
+  position: absolute;
+  bottom: 1rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  column-gap: 1.5rem;
+  background-color: hsla(0, 0%, 15%, 0.5);
+  width: calc(100% - 1rem);
+  padding-top: 1rem;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/*# sourceMappingURL=style.css.map */
