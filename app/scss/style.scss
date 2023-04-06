@@ -1,0 +1,294 @@
+@use './colors' as *;
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 100%;
+    background-color: black;
+    color: $color-light;
+}
+
+// ------------------------------
+//  Global styles
+// ------------------------------
+
+
+a {
+    text-decoration: none;
+    color: $color-light;
+    font-size: 14px !important;
+}
+
+li {
+    list-style: none;
+}
+
+.padding-inline {
+    padding-inline: 1rem;
+}
+
+svg {
+    color: $color-light;
+    height: 23px;
+}
+
+// ------------------------------
+//  Full website wrapper styles
+// ------------------------------
+
+section {
+    max-width: 400px;
+    height: 100vh;
+    // max-height: max-content;
+    margin-inline: auto;
+    background-color: $background-dark;
+    overflow-x: hidden;
+
+    position: relative;
+}
+
+// ------------------------------
+//  Navigation bar styles
+// ------------------------------
+
+nav {
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    .top-logo {
+        height: 20px;
+    }
+
+    ul {
+        display: flex;
+        gap: 1.3rem;
+    }
+
+}
+
+// ------------------------------
+//  SubNavigation bar styles
+// ------------------------------
+
+.sub-nav {
+    padding-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    overflow-inline: scroll;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+
+    // &::-webkit-scrollbar {
+    //     background-color: red;
+    // }
+
+    // &::-webkit-scrollbar-track {
+    //     background-color: green;
+    // }
+
+    // &::-webkit-scrollbar-thumb {
+    //     height: 0.3rem;
+    //     color: red;
+    //     background-color: rebeccapurple;
+    // }
+
+    div {
+        margin-inline-end: 2rem;
+
+        a {
+            svg {
+                padding: 0.3rem 0.8rem;
+                background-color: $background-dark-1;
+                height: 100% !important;
+                width: max-content !important;
+                border-radius: 5px;
+            }
+        }
+
+    }
+
+    ul {
+        display: flex;
+        gap: 0.5rem;
+
+        li {
+            &:nth-child(1) {
+                a {
+                    background-color: $color-light !important;
+                    color: $background-dark !important;
+                }
+            }
+
+            a {
+                background-color: $background-dark-1;
+                padding: 0.5rem 0.8rem;
+                border-radius: 5px;
+                font-size: 16px;
+
+                clear: both;
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+
+    }
+}
+
+// ------------------------------
+//  Video feed styles
+// ------------------------------
+
+
+p {
+    font-size: 12px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    .video {
+        display: flex;
+        flex-direction: column;
+
+        .a-video-container {
+            position: relative;
+            width: 100%;
+
+            .a_video {
+                width: 100%;
+                aspect-ratio: 16/9;
+                background-color: $background-dark-overlay;
+            }
+
+            span {
+                position: absolute;
+                right: 0.5rem;
+                bottom: 0.5rem;
+                background-color: $background-dark-overlay;
+                padding: 0.2rem 0.4rem;
+                border-radius: 5px;
+            }
+        }
+
+        .meta-info {
+            padding: 0.8rem 0.5rem;
+            display: flex;
+            justify-content: space-between;
+
+
+            &>div {
+                display: flex;
+                column-gap: 0.5rem;
+
+                .videoDP {
+                    width: 40px !important;
+                    height: 40px !important;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                }
+
+                .right-side {
+
+                    .video-title {
+                        font-size: 14px;
+                    }
+
+                    span {
+                        margin-top: 0.2rem;
+                        display: flex;
+                        column-gap: 0.5rem;
+                        color: $color-light-1;
+                    }
+                }
+            }
+
+            .more-options {
+                cursor: pointer;
+                justify-self: flex-end;
+                right: 0;
+                // position: relative;
+
+                &-menu {
+                    background-color: rgba(0, 0, 0, 0.5);
+                    visibility: visible;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    overflow: hidden;
+
+                    z-index: 1000;
+
+                    ul {
+                        position: fixed;
+                        margin-inline: auto;
+                        bottom: 0.2rem;
+                        left: 0.5rem;
+                        right: 0.5rem;
+                        background-color: $background-dark;
+                        width: clamp(200px, 100%, 400px);
+                        padding-top: 1rem;
+                        // padding-top: 1rem;
+                        border-radius: 20px;
+
+                        // transform: translateY(110%);
+                        transition: transform 0.25s ease;
+
+                        li {
+
+                            span {
+                                display: flex;
+                                align-items: center;
+                                column-gap: 1.5rem;
+                                padding: 0.5rem 1rem;
+                                width: 100%;
+
+                                &:hover {
+                                    background-color: $background-dark-overlay;
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                &-msg {
+                    position: fixed;
+
+                    margin-inline: auto;
+                    width: clamp(200px, 100%, 400px);
+
+                    bottom: 1rem;
+                    left: 0.5rem;
+                    right: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 1.5rem;
+                    background-color: $background-dark-1;
+                    padding-top: 1rem;
+                    border-radius: 8px;
+                    padding: 1rem 2rem;
+
+                    transition: transform 0.25s ease, opacity 0.25s ease;
+                    z-index: 1000;
+
+                }
+            }
+        }
+    }
+}

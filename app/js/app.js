@@ -1,4 +1,35 @@
+import * as env from 'dotenv'
+
+env.dotenv.config()
+
+console.log(process.env.API_KEY)
+
 let videoRenderElement = document.querySelector("main");
+
+
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': process.env.API_KEY,
+        'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+    }
+};
+
+fetch('https://youtube-search-results.p.rapidapi.com/youtube-search/?q=computer%2Bgaming', options)
+    .then(response => response.json())
+    .then(response => {
+        for (item in response.items) {
+            if (response.items[item].type == "video") {
+                let renderItem = response.items[item]
+                videoRenderElement.innerHTML += (videoTemplate(renderItem.title, renderItem.author.name, renderItem.views, renderItem.duration, renderItem.uploadedAt, renderItem.bestThumbnail.url, renderItem.author.bestAvatar.url))
+
+            }
+        }
+    })
+    .catch(err => console.error(err));
+
+
+
 
 let videos = [
     {
@@ -7,7 +38,8 @@ let videos = [
         'views': 585,
         'duration': '10.00',
         'ago': '8 Days',
-        'thumbnailSrc': 'https://images.pexels.com/photos/41951/solar-system-emergence-spitzer-telescope-telescope-41951.jpeg?auto=compress&cs=tinysrgb&w=300'
+        'thumbnailSrc': 'https://images.pexels.com/photos/41951/solar-system-emergence-spitzer-telescope-telescope-41951.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'dpSrc': 'https://xsgames.co/randomusers/avatar.php?g=male'
     },
     {
         'title': 'The Amazing World of Microbes: How They Shape Our Lives',
@@ -15,7 +47,8 @@ let videos = [
         'views': 999,
         'duration': '08.00',
         'ago': '4 Days',
-        'thumbnailSrc': 'https://images.pexels.com/photos/2694037/pexels-photo-2694037.jpeg?auto=compress&cs=tinysrgb&w=300'
+        'thumbnailSrc': 'https://images.pexels.com/photos/2694037/pexels-photo-2694037.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'dpSrc': 'https://xsgames.co/randomusers/avatar.php?g=female'
     },
     {
         'title': 'The Physics of Roller Coasters: How They Thrill and Excite Us',
@@ -23,7 +56,8 @@ let videos = [
         'views': 14,
         'duration': '12.00',
         'ago': '1 Month',
-        'thumbnailSrc': 'https://images.pexels.com/photos/2156/sky-earth-space-working.jpg?auto=compress&cs=tinysrgb&w=300'
+        'thumbnailSrc': 'https://images.pexels.com/photos/2156/sky-earth-space-working.jpg?auto=compress&cs=tinysrgb&w=300',
+        'dpSrc': 'https://xsgames.co/randomusers/avatar.php?g=male'
     },
     {
         'title': 'The Chemistry of Cooking: How Heat and Chemical Reactions Transform Food',
@@ -31,7 +65,8 @@ let videos = [
         'views': 452,
         'duration': '10.00',
         'ago': '5 Months',
-        'thumbnailSrc': 'https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?auto=compress&cs=tinysrgb&w=300'
+        'thumbnailSrc': 'https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'dpSrc': 'https://xsgames.co/randomusers/avatar.php?g=pixel'
     },
     {
         'title': 'The Biology of Aging: How Our Cells Change Over Time"',
@@ -39,7 +74,8 @@ let videos = [
         'views': 894,
         'duration': '20.00',
         'ago': '2 Days',
-        'thumbnailSrc': 'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=300'
+        'thumbnailSrc': 'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'dpSrc': 'https://xsgames.co/randomusers/avatar.php?g=male'
     },
     {
         'title': 'How to Build a Gaming PC:Step-by-Step Guide for Beginners',
@@ -47,7 +83,8 @@ let videos = [
         'views': 268,
         'duration': '20.00',
         'ago': '8 Days',
-        'thumbnailSrc': 'https://images.pexels.com/photos/1038916/pexels-photo-1038916.jpeg?auto=compress&cs=tinysrgb&w=300'
+        'thumbnailSrc': 'https://images.pexels.com/photos/1038916/pexels-photo-1038916.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'dpSrc': 'https://xsgames.co/randomusers/avatar.php?g=pixel'
     },
     {
         'title': 'The Future of Artificial Intelligence: How It Will Change Our Lives',
@@ -55,16 +92,16 @@ let videos = [
         'views': 195,
         'duration': '15.00',
         'ago': '9 Days',
-        'thumbnailSrc': 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=300'
+        'thumbnailSrc': 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'dpSrc': 'https://xsgames.co/randomusers/avatar.php?g=female'
     }
 ]
 
 window.addEventListener("load", (event) => {
     console.log("page is fully loaded");
     for (let video in videos) {
-        videoRenderElement.innerHTML += (videoTemplate(videos[video]['title'], videos[video]['userName'], videos[video]['views'], videos[video]['duration'], videos[video]['ago'], videos[video].thumbnailSrc))
+        // videoRenderElement.innerHTML += (videoTemplate(videos[video]['title'], videos[video]['userName'], videos[video]['views'], videos[video]['duration'], videos[video]['ago'], videos[video].thumbnailSrc, videos[video].dpSrc))
     }
-    // videoRenderElement.innerHTML = videoTemplate("How to install node js", "Pero Dev", 204, '02.50', "5 Hours", './images/Thumbnail.png');
 });
 
 function videoMoreOptions(e) {
@@ -77,11 +114,10 @@ function videoMoreOptions(e) {
 }
 
 function moreOptionLink(e, message) {
-    let svg = e.children[0]
-    console.log(svg)
+    // let svg = e.childElement[0]
+    // console.log(svg)
     let msgElement =
         `<div class="more-options-msg">
-        ${svg}
         <p>${message}</p>
         </div>`
     // e.parentElement.parentElement.parentElement.classList.add("hide")
@@ -171,7 +207,7 @@ let moreOptionMenu = `<div class="more-options-menu">
 </ul>
 </div>`
 
-function videoTemplate(title, userName, views, duration, ago, thumbnailSrc,) {
+function videoTemplate(title, userName, views, duration, ago, thumbnailSrc, dpSrc) {
     return `
     <div class="video">
         <div class="a-video-container">
@@ -188,7 +224,7 @@ function videoTemplate(title, userName, views, duration, ago, thumbnailSrc,) {
         <div class="meta-info">
             <div>
                 <a href="/profile.html">
-                    <img src="./images/dp.png" alt="profile-img">
+                    <img src="${dpSrc}" alt="profile-img" class="videoDP">
                 </a>
                 <div class="right-side">
                         <h3 class="video-title">${title}</h3>

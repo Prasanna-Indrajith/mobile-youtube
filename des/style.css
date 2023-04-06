@@ -35,10 +35,10 @@ svg {
 
 section {
   max-width: 400px;
-  min-height: 100vh;
-  max-height: max-content;
+  height: 100vh;
   margin-inline: auto;
   background-color: hsl(0, 0%, 8%);
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -131,11 +131,11 @@ main .video .meta-info > div {
   display: flex;
   column-gap: 0.5rem;
 }
-main .video .meta-info > div img {
+main .video .meta-info > div .videoDP {
   width: 40px !important;
   height: 40px !important;
   aspect-ratio: 1/1;
-  border: 50%;
+  border-radius: 50%;
 }
 main .video .meta-info > div .right-side .video-title {
   font-size: 14px;
@@ -160,12 +160,16 @@ main .video .meta-info .more-options-menu {
   left: 0;
   right: 0;
   overflow: hidden;
+  z-index: 1000;
 }
 main .video .meta-info .more-options-menu ul {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  margin-inline: auto;
+  bottom: 0.2rem;
+  left: 0.5rem;
+  right: 0.5rem;
   background-color: hsl(0, 0%, 8%);
-  width: 100%;
+  width: clamp(200px, 100%, 400px);
   padding-top: 1rem;
   border-radius: 20px;
   transition: transform 0.25s ease;
@@ -181,19 +185,21 @@ main .video .meta-info .more-options-menu ul li span:hover {
   background-color: hsla(0, 0%, 15%, 0.5);
 }
 main .video .meta-info .more-options-msg {
-  position: absolute;
+  position: fixed;
+  margin-inline: auto;
+  width: clamp(200px, 100%, 400px);
   bottom: 1rem;
   left: 0.5rem;
   right: 0.5rem;
   display: flex;
   align-items: center;
   column-gap: 1.5rem;
-  background-color: hsla(0, 0%, 15%, 0.5);
-  width: calc(100% - 1rem);
+  background-color: hsl(0, 0%, 15%);
   padding-top: 1rem;
   border-radius: 8px;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   transition: transform 0.25s ease, opacity 0.25s ease;
+  z-index: 1000;
 }
 
 /*# sourceMappingURL=style.css.map */
