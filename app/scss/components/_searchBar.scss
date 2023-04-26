@@ -1,0 +1,54 @@
+@use "../colors" as *;
+
+.search-bar {
+  visibility: visible;
+
+  z-index: 1100;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  background-color: $background-dark;
+
+  div {
+    background-color: $background-dark-1;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    #search-feild {
+      width: 70%;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid $background-dark;
+      border-radius: 5px;
+      background-color: $background-dark-1;
+      color: $color-light-1;
+
+      &:focus,
+      &:focus-within {
+        outline: none;
+      }
+    }
+
+    #back-btn,
+    #search-btn {
+      svg {
+        transition: stroke 0.25s ease;
+        &:hover {
+          stroke: $color-light-1;
+        }
+      }
+
+      cursor: pointer;
+      padding: 0.5rem;
+      position: relative;
+      z-index: 1105;
+    }
+  }
+}
+
+.hide {
+  visibility: hidden;
+}

@@ -1,7 +1,63 @@
+.search-bar {
+  visibility: visible;
+  z-index: 1100;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  background-color: hsl(0, 0%, 8%);
+}
+.search-bar div {
+  background-color: hsl(0, 0%, 15%);
+  padding: 0.5rem 1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-bar div #search-feild {
+  width: 70%;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid hsl(0, 0%, 8%);
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 15%);
+  color: hsl(0, 0%, 70%);
+}
+.search-bar div #search-feild:focus, .search-bar div #search-feild:focus-within {
+  outline: none;
+}
+.search-bar div #back-btn,
+.search-bar div #search-btn {
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 1105;
+}
+.search-bar div #back-btn svg,
+.search-bar div #search-btn svg {
+  transition: stroke 0.25s ease;
+}
+.search-bar div #back-btn svg:hover,
+.search-bar div #search-btn svg:hover {
+  stroke: hsl(0, 0%, 70%);
+}
+
+.hide {
+  visibility: hidden;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-color: transparent transparent;
+}
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
 html {
@@ -33,7 +89,7 @@ svg {
   height: 23px;
 }
 
-section {
+#content-wrapper-section-tag {
   max-width: 400px;
   height: 100vh;
   margin-inline: auto;
@@ -43,7 +99,7 @@ section {
 }
 
 nav {
-  padding-block: 0.5rem;
+  padding-block: 0.8rem 0.5rem;
   display: flex;
   justify-content: space-between;
 }
@@ -53,6 +109,9 @@ nav .top-logo {
 nav ul {
   display: flex;
   gap: 1.3rem;
+}
+nav ul li span {
+  cursor: pointer;
 }
 
 .sub-nav {
@@ -100,6 +159,7 @@ p {
 main {
   display: flex;
   flex-direction: column;
+  padding-bottom: 4rem;
 }
 main .video {
   display: flex;
@@ -188,7 +248,7 @@ main .video .meta-info .more-options-msg {
   position: fixed;
   margin-inline: auto;
   width: clamp(200px, 100%, 400px);
-  bottom: 1rem;
+  bottom: 4rem;
   left: 0.5rem;
   right: 0.5rem;
   display: flex;
@@ -200,6 +260,90 @@ main .video .meta-info .more-options-msg {
   padding: 1rem 2rem;
   transition: transform 0.25s ease, opacity 0.25s ease;
   z-index: 1000;
+}
+
+.footer-menu ul {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  background-color: hsl(0, 0%, 15%);
+  position: fixed;
+  bottom: 0;
+  width: 400px;
+  z-index: 900;
+}
+.footer-menu ul .active-footer-link #library-svg svg {
+  fill: none !important;
+  stroke: white !important;
+}
+.footer-menu ul .active-footer-link svg {
+  fill: white !important;
+  stroke: black;
+}
+.footer-menu ul li {
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.footer-menu ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.2rem;
+  position: relative;
+}
+.footer-menu ul li a::after {
+  content: "";
+  position: absolute;
+  z-index: 905;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: hsl(0, 0%, 8%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity ease 0.2s, transform ease 0.2s;
+}
+@keyframes linkClick {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+.footer-menu ul li a span {
+  font-size: 12px;
+  z-index: 910;
+}
+.footer-menu ul li a svg {
+  z-index: 910;
+}
+.footer-menu ul li:nth-child(3) a svg {
+  height: 45px !important;
+}
+.footer-menu ul li:nth-child(4) {
+  position: relative;
+}
+.footer-menu ul li:nth-child(4) a span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 30%;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid hsl(0, 0%, 15%);
+}
+.footer-menu ul .footer-link-animated a::after {
+  animation: linkClick 0.5s ease forwards;
 }
 
 /*# sourceMappingURL=style.css.map */

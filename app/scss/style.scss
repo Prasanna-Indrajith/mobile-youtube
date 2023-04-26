@@ -1,0 +1,391 @@
+@use "./colors" as *;
+@use "./variables" as *;
+@forward "./components";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-color: transparent transparent;
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  width: 100%;
+  background-color: black;
+  color: $color-light;
+
+  //   scrollbar-color: red red;
+  //   scrollbar-width: thin;
+}
+
+// ------------------------------
+//  Global styles
+// ------------------------------
+
+a {
+  text-decoration: none;
+  color: $color-light;
+  font-size: 14px !important;
+}
+
+li {
+  list-style: none;
+}
+
+.padding-inline {
+  padding-inline: 1rem;
+}
+
+svg {
+  color: $color-light;
+  height: 23px;
+}
+
+// ------------------------------
+//  Full website wrapper styles
+// ------------------------------
+
+#content-wrapper-section-tag {
+  max-width: 400px;
+  height: 100vh;
+  // max-height: max-content;
+  margin-inline: auto;
+  background-color: $background-dark;
+  overflow-x: hidden;
+
+  position: relative;
+}
+
+// ------------------------------
+//  Navigation bar styles
+// ------------------------------
+
+nav {
+  padding-block: 0.8rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  .top-logo {
+    height: 20px;
+  }
+
+  ul {
+    display: flex;
+    gap: 1.3rem;
+
+    li {
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// ------------------------------
+//  SubNavigation bar styles
+// ------------------------------
+
+.sub-nav {
+  padding-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  overflow-inline: scroll;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+
+  div {
+    margin-inline-end: 2rem;
+
+    a {
+      svg {
+        padding: 0.3rem 0.8rem;
+        background-color: $background-dark-1;
+        height: 100% !important;
+        width: max-content !important;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    gap: 0.5rem;
+
+    li {
+      &:nth-child(1) {
+        a {
+          background-color: $color-light !important;
+          color: $background-dark !important;
+        }
+      }
+
+      a {
+        background-color: $background-dark-1;
+        padding: 0.5rem 0.8rem;
+        border-radius: 5px;
+        font-size: 16px;
+
+        clear: both;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+// ------------------------------
+//  Video feed styles
+// ------------------------------
+
+p {
+  font-size: $text-small;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 4rem;
+
+  .video {
+    display: flex;
+    flex-direction: column;
+
+    .a-video-container {
+      position: relative;
+      width: 100%;
+
+      .a_video {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background-color: $background-dark-overlay;
+      }
+
+      span {
+        position: absolute;
+        right: 0.5rem;
+        bottom: 0.5rem;
+        background-color: $background-dark-overlay;
+        padding: 0.2rem 0.4rem;
+        border-radius: 5px;
+      }
+    }
+
+    .meta-info {
+      padding: 0.8rem 0.5rem;
+      display: flex;
+      justify-content: space-between;
+
+      & > div {
+        display: flex;
+        column-gap: 0.5rem;
+
+        .videoDP {
+          width: 40px !important;
+          height: 40px !important;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+        }
+
+        .right-side {
+          .video-title {
+            font-size: 14px;
+          }
+
+          span {
+            margin-top: 0.2rem;
+            display: flex;
+            column-gap: 0.5rem;
+            color: $color-light-1;
+          }
+        }
+      }
+
+      .more-options {
+        cursor: pointer;
+        justify-self: flex-end;
+        right: 0;
+        // position: relative;
+
+        &-menu {
+          background-color: rgba(0, 0, 0, 0.5);
+          visibility: visible;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          overflow: hidden;
+
+          z-index: 1000;
+
+          ul {
+            position: fixed;
+            margin-inline: auto;
+            bottom: 0.2rem;
+            left: 0.5rem;
+            right: 0.5rem;
+            background-color: $background-dark;
+            width: clamp(200px, 100%, 400px);
+            padding-top: 1rem;
+            // padding-top: 1rem;
+            border-radius: 20px;
+
+            // transform: translateY(110%);
+            transition: transform 0.25s ease;
+
+            li {
+              span {
+                display: flex;
+                align-items: center;
+                column-gap: 1.5rem;
+                padding: 0.5rem 1rem;
+                width: 100%;
+
+                &:hover {
+                  background-color: $background-dark-overlay;
+                }
+              }
+            }
+          }
+        }
+
+        &-msg {
+          position: fixed;
+
+          margin-inline: auto;
+          width: clamp(200px, 100%, 400px);
+
+          bottom: 4rem;
+          left: 0.5rem;
+          right: 0.5rem;
+          display: flex;
+          align-items: center;
+          column-gap: 1.5rem;
+          background-color: $background-dark-1;
+          padding-top: 1rem;
+          border-radius: 8px;
+          padding: 1rem 2rem;
+
+          transition: transform 0.25s ease, opacity 0.25s ease;
+          z-index: 1000;
+        }
+      }
+    }
+  }
+}
+
+.footer-menu {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    background-color: $background-dark-1;
+    position: fixed;
+    bottom: 0;
+    width: 400px;
+    z-index: 900;
+
+    .active-footer-link {
+      #library-svg svg {
+        fill: none !important;
+        stroke: white !important;
+      }
+      svg {
+        fill: white !important;
+        stroke: black;
+      }
+    }
+
+    li {
+      position: relative;
+      padding: 0.5rem;
+      border-radius: 10px;
+
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 0.2rem;
+
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: 905;
+          transform: translate(-50%, -50%);
+          width: 8px;
+          height: 8px;
+          background-color: $background-dark;
+          border-radius: 50%;
+          opacity: 0;
+          transition: opacity ease 0.2s, transform ease 0.2s;
+        }
+
+        @keyframes linkClick {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            transform: scale(10);
+            opacity: 0;
+          }
+        }
+
+        span {
+          font-size: $text-small;
+          z-index: 910;
+        }
+        svg {
+          z-index: 910;
+        }
+      }
+
+      &:nth-child(3) {
+        a svg {
+          height: 45px !important;
+        }
+      }
+
+      &:nth-child(4) {
+        position: relative;
+
+        a span::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 30%;
+          width: 8px;
+          height: 8px;
+          background-color: red;
+          border-radius: 50%;
+          border: 2px solid $background-dark-1;
+        }
+      }
+    }
+    .footer-link-animated {
+      a::after {
+        animation: linkClick 0.5s ease forwards;
+      }
+    }
+  }
+}
