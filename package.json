@@ -1,18 +1,23 @@
 {
   "name": "youtube-mobile-clone",
   "version": "1.0.0",
-  "description": "",
+  "description": "Youtube mobile",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "sass --watch ./app/scss/style.scss:./des/style.css"
+    "dev": "sass --watch ./app/scss/style.scss:./dist/style.css",
+    "build": "echo 'Nope!!'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "http-server": "^14.1.1",
+    "node": "^19.8.1"
   },
   "devDependencies": {
+    "http": "^0.0.1-security",
     "sass": "^1.60.0"
   }
 }
